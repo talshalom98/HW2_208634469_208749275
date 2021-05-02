@@ -2,14 +2,19 @@
 #include <stdio.h>
 
 int add_ok(int x, int y);
+unsigned float_neg (unsigned uf);
 
 
 int main()
 {
-    int x = ;
+    /*int x = ;
     int y = -9999999999999999999;
     int ok = add_ok(x, y);
-    printf("%d", ok);
+    printf("%d", ok);*/
+    printf("Enter 32-bit number, representing a floating point:\n");
+    unsigned int uf;
+    scanf("%x", &uf);
+    printf("%x\n", float_neg(uf));
     return 0;
 }
 
@@ -20,4 +25,11 @@ int add_ok(int x, int y)
     if ((x<0)&(y<0)&((x+y)>0))
         return -2;
     return 1;
+}
+
+
+unsigned float_neg (unsigned uf)
+{
+    unsigned int mask = (1 << 31);
+    return uf | mask;
 }
