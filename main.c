@@ -30,6 +30,9 @@ int add_ok(int x, int y)
 
 unsigned float_neg (unsigned uf)
 {
-    unsigned int mask = (1 << 31);
-    return uf | mask;
+    unsigned int xor_element = (1 << 31);   //1000 0000 0000 ... integer. for '^' bitwise operator with uf.
+    int frac_mask = (1U << 23) - 1;  //to check if frac > 0
+    unsigned exp_only = uf >> 23;
+    int exp_mask = (1U << 8) -1;
+    return uf ^ xor_element;
 }
